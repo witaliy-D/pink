@@ -1,0 +1,207 @@
+// В этом файле должны быть стили для БЭМ-блока form, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.form {
+  $block-name: &; // #{$block-name}__element
+
+  @media (min-width: $screen-md) {
+    @include container();
+
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media (min-width: $screen-lg) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+}
+
+.form__fieldset-wrapper {
+  @media (max-width: $screen-md - 0.1) {
+    padding-top: 35px;
+    background: $lightgray;
+  }
+}
+
+.form__fieldset-wrapper--info {
+  @media (min-width: $screen-md) {
+    order: 2;
+  }
+
+  @media (min-width: $screen-lg) {
+    flex-basis: 435px;
+  }
+}
+
+.form__fieldset-wrapper--progress {
+  @media (min-width: $screen-md) {
+    order: 4;
+  }
+
+  @media (min-width: $screen-lg) {
+    flex-basis: 100%;
+  }
+}
+
+.form__fieldset {
+  margin: 0;
+  margin-bottom: 30px;
+  padding: 0 60px;
+  border: 2px solid $gray;
+
+  @media (max-width: $screen-md - 0.1) {
+    @include container();
+
+    border: none;
+  }
+
+  @media (min-width: $screen-md) {
+    margin-bottom: 60px;
+  }
+
+  @media (min-width: $screen-lg) {
+    flex-basis: 100%;
+  }
+}
+
+.form__legend {
+  font-size: $font-size-sm;
+  line-height: 18px;
+  margin: 0 auto;
+  margin-bottom: 15px;
+  padding: 0 10px;
+  text-align: center;
+  white-space: normal;
+  text-transform: uppercase;
+  color: $pink;
+
+  @media (min-width: $screen-md) {
+    margin-bottom: 40px;
+  }
+}
+
+.form__items-contacts {
+  @media (min-width: $screen-lg) {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.form__item-contacts {
+  @media (min-width: $screen-lg) {
+    flex-basis: 375px;
+  }
+}
+
+.form__fieldset--initials {
+  @media (min-width: $screen-md) {
+    margin-bottom: 20px;
+    padding: 0;
+    border: none;
+  }
+
+  @media (min-width: $screen-lg) {
+    flex-basis: 435px;
+    margin-top: 15px;
+  }
+}
+
+.form__fieldset--progress {
+  @media (min-width: $screen-lg) {
+    padding-bottom: 20px;
+  }
+
+  .form__legend {
+    margin-bottom: 45px;
+
+    @media (min-width: $screen-lg) {
+      margin-bottom: 50px;
+    }
+  }
+}
+
+.form__fieldset--contacts {
+  margin-bottom: 40px;
+
+  @media (min-width: $screen-md) {
+    order: 3;
+  }
+
+  .form__legend {
+    @media (max-width: $screen-md - 0.1) {
+      display: none;
+    }
+  }
+}
+
+.form__fieldset--info {
+  margin-bottom: 60px;
+
+  @media (min-width: $screen-lg) {
+    padding: 0;
+    padding-bottom: 20px;
+  }
+
+  .form__legend {
+    margin-bottom: 40px;
+
+    @media (min-width: $screen-md) {
+      margin-bottom: 60px;
+    }
+  }
+}
+
+.form__fieldset--description {
+  @media (min-width: $screen-md) {
+    order: 5;
+  }
+
+  .form__legend {
+    @media (min-width: $screen-lg) {
+      margin-bottom: 30px;
+    }
+  }
+}
+
+.form__item-submit {
+  margin-bottom: 30px;
+  text-align: center;
+
+  @media (min-width: $screen-md) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    order: 6;
+    margin-bottom: 45px;
+  }
+
+  @media (min-width: $screen-lg) {
+    flex-basis: 100%;
+    margin-bottom: 10px;
+  }
+}
+
+.form__item-btn {
+  @media (max-width: $screen-md - 0.1) {
+    margin-bottom: 35px;
+  }
+}
+
+.form__item-submit-text {
+  font-size: $font-size-sm;
+  line-height: $line-height;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.form__item-submit-symbol {
+  color: $pink;
+}
+
+.form__item-submit-text-option {
+  @media (max-width: $screen-lg - 0.1) {
+    display: none;
+  }
+}

@@ -1,0 +1,31 @@
+// В этом файле должны быть стили для БЭМ-блока page-header, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.page-header {
+  $block-name: &; // #{$block-name}__element
+
+  margin-bottom: 40px;
+
+  @media (min-width: $screen-md) {
+    margin-bottom: 50px;
+  }
+
+  @media (min-width: $screen-md) {
+    margin-bottom: 65px;
+  }
+}
+
+.page-header--photo,
+.page-header--form {
+  margin-bottom: 45px;
+
+  @media (min-width: $screen-md) {
+    margin-bottom: 90px;
+  }
+}
+
+.page-header--photo {
+  @media (min-width: $screen-lg) {
+    margin-bottom: 65px;
+  }
+}

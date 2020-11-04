@@ -1,0 +1,23 @@
+extends ../pug/layouts/default
+
+block variables
+  -
+    var title = 'HTML Academy: Пинк';
+    var selectedID = '1';
+    var page = 'index';
+    var headerMod = false
+
+block content
+  include ../pug/modules/features
+  include ../pug/modules/time
+  +review()(class='swiper-container')
+  include ../pug/modules/price
+  include ../pug/modules/contacts
+  .map
+    .map__block
+block scripts
+  script(src='https://maps.googleapis.com/maps/api/js?key=API_KEY')
+  script(src='js/vendors~index~photo.js')
+  script(src='js/vendors~form~index.js')
+  script(src='js/vendors~index.js')
+  script(src='js/index.js')

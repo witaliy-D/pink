@@ -1,0 +1,81 @@
+// В этом файле должны быть стили для БЭМ-блока page-footer, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.page-footer {
+  $block-name: &; // #{$block-name}__element
+
+  @include container();
+
+  line-height: 0;
+  padding-top: 20px;
+  padding-bottom: 40px;
+  text-align: center;
+
+  @media (min-width: $screen-md) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 26px;
+    padding-bottom: 26px;
+  }
+
+  @media (min-width: $screen-lg) {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+}
+
+.page-footer__logo {
+  margin-bottom: 10px;
+
+  @media (min-width: $screen-md) {
+    margin-bottom: 0;
+  }
+}
+
+.page-footer__info {
+  margin-top: 35px;
+  margin-bottom: 0;
+
+  @media (min-width: $screen-md) {
+    margin-top: 0;
+  }
+}
+
+.page-footer__info-text {
+  display: inline-block;
+  font-size: $font-size-sm;
+  line-height: 18px;
+
+  @media (min-width: $screen-lg) {
+    font-size: $font-size;
+  }
+}
+
+.page-footer__link {
+  display: inline-block;
+  margin-left: 10px;
+  vertical-align: middle;
+  color: $pink;
+  transition: color $transition-time;
+
+  &:hover {
+    color: $blue;
+  }
+
+  &:active {
+    opacity: 0.3;
+  }
+}
+
+.page-footer__info-logo {
+  display: inline-block;
+  width: 27px;
+  height: 34px;
+}
+
+.page-footer--none-sm {
+  @media (max-width: $screen-md - 0.1) {
+    display: none;
+  }
+}

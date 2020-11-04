@@ -1,0 +1,100 @@
+// В этом файле должны быть стили для БЭМ-блока btn, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.btn {
+  display: inline-block;
+  overflow: hidden;
+  font-family: inherit;
+  font-size: $font-size;
+  line-height: 18px;
+  font-weight: 700;
+  margin: 0;
+  padding: 15px 35px;
+  box-sizing: border-box;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  text-decoration: none;
+  text-transform: none;
+  text-overflow: ellipsis;
+  color: $white;
+  background-color: transparent;
+  background-image: none;
+  border: 3px solid $white;
+  border-radius: 30px;
+  outline: none;
+  transition: background-color $transition-time, color $transition-time, border $transition-time;
+  cursor: pointer;
+  user-select: none;
+
+  &:hover,
+  &:active {
+    text-decoration: none;
+    color: $pink;
+    background-color: $white;
+  }
+
+  &:active {
+    color: $pink-down;
+  }
+}
+
+.btn--green {
+  line-height: 30px;
+  text-transform: uppercase;
+  background: #2aab6d;
+  border: 2px solid #2aab6d;
+  border-radius: 0;
+
+  &:hover,
+  &:active {
+    color: $white;
+    background: #1c9b5e;
+    border: 2px solid #1c9b5e;
+  }
+}
+
+.btn--w300 {
+  width: 100%;
+  max-width: 300px;
+}
+
+.btn--block {
+  width: 100%;
+}
+
+.btn--pink {
+  color: $pink;
+  border-color: $pink;
+
+  &:hover {
+    color: $white;
+    background-color: $pink;
+  }
+
+  &:active {
+    color: rgba(255, 255, 255, 0.3);
+    background-color: $pink;
+  }
+}
+
+.btn--blue {
+  color: #dddfe0;
+  border-color: #dddfe0;
+
+  &:hover {
+    color: #b5b9be;
+    background-color: transparent;
+    border-color: #b5b9be;
+  }
+
+  &:active {
+    color: #cbced2;
+    background-color: #b5b9be;
+  }
+}
+
+// stylelint-disable-next-line
+button.btn span {
+  position: relative; //привет ie
+}

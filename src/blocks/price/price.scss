@@ -1,0 +1,380 @@
+// В этом файле должны быть стили для БЭМ-блока price, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.price {
+  $block-name: &; // #{$block-name}__element
+
+  margin-bottom: 40px;
+  padding-top: 90px;
+  padding-bottom: 100px;
+  background: $lightgray url('../img/bg-triangle-white.svg') no-repeat top;
+  background-size: 100% auto;
+
+  @media (max-width: $screen-md - 0.1) {
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  @media (min-width: $screen-md) {
+    padding-bottom: 65px;
+  }
+
+  @media (min-width: $screen-lg) {
+    margin-bottom: 60px;
+    padding-top: 125px;
+    padding-bottom: 100px;
+  }
+}
+
+.price__container {
+  @media (max-width: $screen-md - 0.1) {
+    width: 300%;
+    transition: transform $transition-time ease;
+  }
+
+  @media (min-width: $screen-md) {
+    @include container();
+  }
+}
+
+.price__inner {
+  @media (max-width: $screen-md - 0.1) {
+    display: flex;
+  }
+
+  @media (min-width: $screen-md) {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+  }
+}
+
+.price__item {
+  @media (max-width: $screen-md - 0.1) {
+    width: 100%;
+  }
+
+  @media (min-width: $screen-md) {
+    display: table-cell;
+    vertical-align: bottom;
+    border-right: 2px solid #e5e5e5;
+    border-bottom: 2px solid #e5e5e5;
+  }
+}
+
+.price__item--options {
+  @media (max-width: $screen-md - 0.1) {
+    display: none;
+  }
+}
+
+.price__content-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-align: left;
+  background: $white;
+}
+
+.price__content-item {
+  @media (max-width: $screen-md - 0.1) {
+    @include container();
+
+    box-shadow: inset 0 -2px 0 0 #e5e5e5;
+  }
+
+  @media (min-width: $screen-md) {
+    height: 30px;
+    font-size: 0;
+    padding: 8px 15px;
+    box-sizing: content-box;
+    border-top: 2px solid #e5e5e5;
+  }
+
+  @media (min-width: $screen-lg) {
+    padding: 15px 25px;
+  }
+}
+
+.price__content-item--options {
+  @media (min-width: $screen-md) {
+    font-size: $font-size-sm;
+    border-left: 2px solid #e5e5e5;
+  }
+
+  @media (min-width: $screen-lg) {
+    font-size: $font-size;
+  }
+}
+
+.price__header {
+  text-align: center;
+  background: $blue;
+
+  @media (max-width: $screen-md - 0.1) {
+    @include container();
+  }
+}
+
+.price__title {
+  font-weight: 700;
+  margin: 0;
+  padding: 20px 0;
+  text-transform: uppercase;
+  color: $white;
+
+  @media (max-width: $screen-md - 0.1) {
+    box-shadow: inset 2px 0 0 0 #e5e5e5, inset -2px 0 0 0 #e5e5e5;
+  }
+
+  @media (min-width: $screen-md) {
+    font-size: 16px;
+    padding: 9px 0;
+    border-top: 2px solid #e5e5e5;
+  }
+
+  @media (min-width: $screen-lg) {
+    font-size: $font-size;
+    padding: 20px 0;
+  }
+}
+
+.price__title--hit {
+  position: relative;
+
+  &:before {
+    position: absolute;
+    content: 'хит';
+    top: 10px;
+    left: 6px;
+    width: 40px;
+    height: 30px;
+    font-size: $font-size-sm;
+    z-index: 10;
+    text-align: center;
+    text-transform: uppercase;
+    color: $white;
+    transform: rotate(-45deg);
+
+    @media (min-width: $screen-md) {
+      top: 6px;
+      left: 2px;
+    }
+
+    @media (min-width: $screen-lg) {
+      top: 10px;
+      left: 6px;
+    }
+  }
+
+  &:after {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 74px;
+    height: 73px;
+    background: url('../img/bg-hit.svg') no-repeat top left;
+
+    @media (min-width: $screen-md) {
+      width: 61px;
+      height: 62px;
+    }
+
+    @media (min-width: $screen-lg) {
+      width: 74px;
+      height: 73px;
+    }
+  }
+}
+
+.price__cost {
+  display: block;
+  font-size: $font-size-big;
+  font-weight: 300;
+
+  @media (min-width: $screen-md) {
+    font-size: $font-size;
+  }
+
+  @media (min-width: $screen-lg) {
+    font-size: $font-size-big;
+  }
+}
+
+.price__content-info {
+  position: relative;
+  display: block;
+  text-align: center;
+
+  @media (max-width: $screen-md - 0.1) {
+    font-size: $font-size-sm;
+    padding: 15px 0;
+    box-sizing: border-box;
+    text-transform: uppercase;
+    box-shadow: inset 2px 0 0 0 #e5e5e5, inset -2px 0 0 0 #e5e5e5;
+  }
+}
+
+.price__hidden {
+  @include visually-hidden();
+}
+
+.price__content-item--included .price__content-info {
+  &:after,
+  &:before {
+    position: absolute;
+    content: '';
+    height: 3px;
+    background-color: #49ca50;
+  }
+
+  &:before {
+    top: 21px;
+    right: 50%;
+    width: 15px;
+    margin-left: -13px;
+    transform: rotate(45deg);
+
+    @media (max-width: $screen-md - 0.1) {
+      top: 36px;
+      right: 0;
+      margin-right: 39px;
+    }
+  }
+
+  &:after {
+    top: 15px;
+    width: 30px;
+    margin-left: -8px;
+    transform: rotate(-45deg);
+
+    @media (max-width: $screen-md - 0.1) {
+      top: 30px;
+      right: 17px;
+    }
+  }
+}
+
+.price__content-item--not-included .price__content-info {
+  &:after,
+  &:before {
+    position: absolute;
+    content: '';
+    top: 13px;
+    right: 50%;
+    width: 35px;
+    height: 3px;
+    margin-right: -16px;
+    background-color: #f25b26;
+
+    @media (max-width: $screen-md - 0.1) {
+      top: 28px;
+      right: 0;
+      margin-right: 20px;
+    }
+  }
+
+  &:before {
+    transform: rotate(45deg);
+  }
+
+  &:after {
+    transform: rotate(-45deg);
+  }
+}
+
+.price input[type='radio'] {
+  @include visually-hidden();
+}
+
+.price__controlls--1:checked ~ .price__container {
+  @media (max-width: $screen-md - 0.1) {
+    transform: translate(0%);
+  }
+}
+
+.price__controlls--2:checked ~ .price__container {
+  @media (max-width: $screen-md - 0.1) {
+    transform: translate(-33.33%);
+  }
+}
+
+.price__controlls--3:checked ~ .price__container {
+  @media (max-width: $screen-md - 0.1) {
+    transform: translate(-66.66%);
+  }
+}
+
+.price label {
+  @media (max-width: $screen-md - 0.1) {
+    position: absolute;
+    display: inline-block;
+    bottom: 50px;
+    left: 50%;
+    width: 6px;
+    height: 6px;
+    z-index: 10;
+    vertical-align: baseline;
+    background: #bec2c7;
+    border-radius: 50%;
+    cursor: pointer;
+
+    &:hover {
+      background: #7e868f;
+    }
+
+    &:active {
+      opacity: 0.3;
+    }
+  }
+}
+
+.price label[for='price-controlls--1'] {
+  @media (max-width: $screen-md - 0.1) {
+    margin-left: -25px;
+  }
+}
+
+.price label[for='price-controlls--3'] {
+  @media (max-width: $screen-md - 0.1) {
+    margin-left: 25px;
+  }
+}
+
+.price__controlls--1:checked ~ label[for='price-controlls--1']:before,
+.price__controlls--2:checked ~ label[for='price-controlls--2']:before,
+.price__controlls--3:checked ~ label[for='price-controlls--3']:before {
+  @media (max-width: $screen-md - 0.1) {
+    position: absolute;
+    content: '';
+    top: -3px;
+    left: 50%;
+    width: 6px;
+    height: 6px;
+    margin-left: -6px;
+    box-sizing: content-box;
+    z-index: 100;
+    background: $white;
+    border: $blue 3px solid;
+    border-radius: 50%;
+  }
+}
+
+.price__controlls--1:checked ~ label[for='price-controlls--1']:active,
+.price__controlls--2:checked ~ label[for='price-controlls--2']:active,
+.price__controlls--3:checked ~ label[for='price-controlls--3']:active {
+  @media (max-width: $screen-md - 0.1) {
+    opacity: 1;
+  }
+}
+
+.price__controlls--1:checked ~ label[for='price-controlls--1']:hover,
+.price__controlls--2:checked ~ label[for='price-controlls--2']:hover,
+.price__controlls--3:checked ~ label[for='price-controlls--3']:hover {
+  @media (max-width: $screen-md - 0.1) {
+    cursor: default;
+  }
+}

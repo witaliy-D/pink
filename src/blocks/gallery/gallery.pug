@@ -1,0 +1,33 @@
+//- Все примеси в этом файле должны начинаться c имени блока (gallery)
+
+mixin gallery(mods)
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' photo--' + modsList[i].trim();
+      }
+    }
+
+  include gallery.data.pug
+
+  .gallery(class=allMods)&attributes(attributes)
+    .gallery__inner
+      each galleryItem in galleryItems
+        +photo()(class='gallery__item')
+          a.photo__link(href='#')
+            +picture({
+              imgwebp: galleryItem.imgwebp,
+              img: galleryItem.img,
+              alt: galleryItem.alt
+            })
+          +photo-comment({
+            name: galleryItem.name,
+            date: galleryItem.date,
+            datetime: galleryItem.datetime,
+            count: galleryItem.count,
+            text: galleryItem.text
+          })

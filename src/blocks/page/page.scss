@@ -1,0 +1,101 @@
+// В этом файле должны быть стили для БЭМ-блока page, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.page {
+  $block-name: &; // #{$block-name}__element
+
+  display: flex;
+  flex-direction: column;
+  min-width: 320px;
+  min-height: 100%;
+}
+
+.page__inner {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.page__content {
+  flex-grow: 1;
+}
+
+.page__content-subtitle {
+  width: 250px;
+  margin: 0 auto;
+  text-align: center;
+
+  @media (min-width: $screen-md) {
+    @include container();
+
+    width: 100%;
+    margin-bottom: 50px;
+  }
+
+  @media (min-width: $screen-lg) {
+    margin-bottom: 80px;
+  }
+
+  span {
+    display: block;
+    margin: 25px 0;
+
+    @media (min-width: $screen-md) {
+      margin: 0;
+    }
+  }
+}
+
+.page__content-subtitle--photo {
+  line-height: 30px;
+  margin-bottom: 50px;
+
+  @media (min-width: $screen-md) {
+    width: 500px;
+    margin-bottom: 75px;
+  }
+
+  @media (min-width: $screen-lg) {
+    width: 100%;
+    margin-bottom: 90px;
+  }
+
+  span {
+    margin: 0;
+
+    @media (min-width: $screen-md) and (max-width: $screen-lg - 0.1) {
+      display: inline;
+    }
+  }
+}
+
+.page__content-subtitle--form {
+  width: 300px;
+  line-height: 30px;
+  margin-bottom: 35px;
+
+  @media (min-width: $screen-md) {
+    width: 540px;
+    margin-bottom: 75px;
+  }
+
+  @media (min-width: $screen-lg) {
+    width: 800px;
+  }
+
+  span {
+    display: none;
+
+    @media (min-width: $screen-md) {
+      display: block;
+    }
+
+    @media (min-width: $screen-lg) {
+      display: inline;
+    }
+  }
+}
+
+.page__footer-wrapper {
+  flex-shrink: 0;
+}

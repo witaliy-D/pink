@@ -1,0 +1,83 @@
+// В этом файле должны быть стили для БЭМ-блока logo, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.logo {
+  $block-name: &; // #{$block-name}__element
+
+  display: inline-block;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  white-space: nowrap;
+  color: $white;
+  transition: color $transition-time;
+
+  &:hover {
+    color: $pink;
+  }
+
+  &:active {
+    opacity: 0.3;
+  }
+
+  &:not([href]),
+  &:not([href]):hover,
+  &:not([href]):active {
+    opacity: 1;
+    color: $white;
+  }
+}
+
+.logo__image {
+  display: block;
+}
+
+.logo__image--mobile {
+  width: 74px;
+  height: 23px;
+
+  @media (min-width: $screen-md) {
+    display: none;
+  }
+}
+
+.logo__image--tablet,
+.logo__image--desktop {
+  width: 146px;
+  height: 40px;
+
+  @media (max-width: $screen-md - 0.1) {
+    display: none;
+  }
+}
+
+.logo__image--tablet {
+  @media (min-width: $screen-lg) {
+    display: none;
+  }
+}
+
+.logo__image--desktop {
+  @media (max-width: $screen-lg - 0.1) {
+    display: none;
+  }
+}
+
+.logo__image--small {
+  width: 146px;
+  height: 40px;
+
+  @media (min-width: $screen-lg) {
+    display: none;
+  }
+}
+
+.logo--blue {
+  color: $blue;
+
+  &:active,
+  &:not([href]),
+  &:not([href]):hover,
+  &:not([href]):active {
+    color: $blue;
+  }
+}

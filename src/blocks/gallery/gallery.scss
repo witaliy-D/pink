@@ -1,0 +1,30 @@
+// В этом файле должны быть стили для БЭМ-блока gallery, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.gallery {
+  $block-name: &; // #{$block-name}__element
+  @include container();
+
+  margin-bottom: 25px;
+
+  @media (min-width: $screen-md) {
+    margin-bottom: 45px;
+  }
+}
+
+.gallery__inner {
+  @include row-flex();
+
+  @media (max-width: $screen-md - 0.1) {
+    justify-content: center;
+  }
+}
+
+.gallery__item {
+  @include col();
+  @include size(12);
+  @include size-md(6);
+  @include size-lg(4);
+
+  max-width: 600px;
+}

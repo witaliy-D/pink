@@ -1,0 +1,18 @@
+if page === 'index'
+  -var footerMod = 'page-footer--none-sm'
+else
+  -var footerMod = false;
+
+footer.page__footer-wrapper.page-footer(class = footerMod)
+  +logo('blue')(class='page-footer__logo')
+  +social()
+    +social-link('#')
+      +svg('img/symbols.svg', 'icon-tr')(class='social__logo social__logo--twitter', width='16' height='16')
+    +social-link('#')
+      +svg('img/symbols.svg', 'icon-fk')(class='social__logo social__logo--facebook', width='16' height='16')
+    +social-link('#')
+      +svg('img/symbols.svg', 'icon-ye')(class='social__logo social__logo--youtube', width='16' height='16')
+  .page-footer__info
+    span.page-footer__info-text Разработано
+    a.page-footer__link(href='https://htmlacademy.ru/')
+      +svg('img/symbols.svg', 'logo-htmlacademy')(class='page-footer__info-logo', width='27' height='34')

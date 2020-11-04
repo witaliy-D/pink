@@ -1,0 +1,77 @@
+// В этом файле должны быть стили для БЭМ-блока nav-menu, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.nav-menu {
+  $block-name: &; // #{$block-name}__element
+
+  position: absolute;
+  width: 100%;
+  z-index: 10;
+  background-color: $transparency;
+}
+
+.nav-menu__inner {
+  @include container();
+
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+
+  @media (max-width: $screen-lg - 0.1) {
+    flex-wrap: wrap;
+    padding: 0;
+  }
+}
+
+.nav-menu__logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  min-height: 70px;
+  margin-left: 20px;
+
+  @media (min-width: $screen-md) {
+    min-height: 110px;
+  }
+
+  @media (min-width: $screen-lg) {
+    margin-left: 0;
+  }
+}
+
+.nav-menu__toggle {
+  margin-right: 20px;
+
+  @media (min-width: $screen-lg) {
+    display: none;
+  }
+}
+
+.nav-menu__list {
+  max-height: 0;
+  transition: none;
+
+  @media (min-width: ($screen-lg)) {
+    max-height: inherit;
+    align-self: center;
+  }
+}
+
+.nav-menu--open {
+  @media (max-width: ($screen-lg - 0.1)) {
+    position: static;
+    background-color: rgba(40, 54, 69, 1); //$blue
+  }
+
+  .nav-menu__list {
+    @media (max-width: ($screen-lg - 0.1)) {
+      max-height: 1000px;
+      border-bottom: 1px solid #000000;
+      transition: max-height 0.5s;
+
+      li {
+        box-shadow: 0 -1px 0 0 #000000, inset 0 1px 0 0 rgba(255, 255, 255, 0.15);
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+extends ../pug/layouts/default
+
+block variables
+
+  -
+    var title = 'HTML Academy: Пинк';
+    var selectedID = '2';
+    var page = 'photo';
+    var headerMod = 'page-header--photo'
+
+block content
+  include ../pug/modules/panorama
+  +gallery()
+  include ../pug/modules/photo-edit
+
+block scripts
+  script(src='js/vendors~index~photo.js')
+  script(src='js/photo.js')

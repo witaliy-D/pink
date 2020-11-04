@@ -1,0 +1,82 @@
+// stylelint-disable plugin/selector-bem-pattern
+
+@mixin field-text {
+  display: inline-block;
+  width: 100%;
+  height: calc(#{$line-height} + #{$field-padding-vertical} + #{$field-padding-vertical});
+  font-family: inherit;
+  font-size: 18px;
+  line-height: $line-height;
+  margin: 0;
+  padding: $field-padding-vertical $field-padding-horizontal;
+  vertical-align: middle;
+  background-color: #ffffff;
+  border: 2px solid $border-color;
+  border-radius: 0;
+  // stylelint-disable-next-line
+  -moz-appearance: textfield;
+  // stylelint-disable-next-line
+   //appearance: textfield;
+
+  &:hover {
+    @include field-focus;
+
+    border: 2px solid $blue;
+  }
+
+  &:focus {
+    @include field-focus;
+
+    border: 2px solid $pink;
+  }
+
+  &[disabled],
+  &[readonly] {
+    background-color: $lightgray;
+    cursor: not-allowed;
+  }
+
+  &::-webkit-search-cancel-button,
+  &::-webkit-search-decoration,
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    -webkit-appearance: none; // stylelint-disable-line  property-no-vendor-prefix
+  }
+
+  &[type='color'] {
+    padding: 0;
+  }
+
+  &::placeholder {
+    opacity: 1;
+    color: $text-color-muted;
+  }
+}
+
+@mixin field-help-text {
+  position: absolute;
+  display: block;
+  //left: 50%;
+  width: 100%;
+  font-size: $font-size-sm;
+  line-height: 1;
+  //transform: translateX(-50%);
+  text-align: center;
+  color: $pink;
+
+  &:empty {
+    display: none;
+  }
+}
+
+@mixin field-focus {
+  outline: none;
+  box-shadow: none;
+}
+
+@mixin field-name {
+  display: inline-block;
+  line-height: $line-height;
+  font-weight: 400;
+  margin-bottom: 5px;
+}

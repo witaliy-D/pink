@@ -1,0 +1,184 @@
+// В этом файле должны быть стили для БЭМ-блока field-text, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.field-text {
+  $block-name: &; // #{$block-name}__element
+
+  margin-bottom: $typo-margin-vertical;
+}
+
+.field-text__content {
+  @include field-name;
+
+  font-size: 14px;
+  margin-left: 20px;
+  text-transform: uppercase;
+  color: $pink;
+}
+
+.field-text__input-wrap {
+  position: relative;
+  display: block;
+}
+
+.field-text__input {
+  @include field-text;
+
+  &:focus ~ .field-text__help-text {
+    @include field-help-text;
+  }
+}
+
+.field-text__textarea {
+  @include field-text;
+
+  min-height: 200px;
+  padding: 25px 20px;
+
+  @media (min-width: $screen-lg) {
+    min-height: 140px;
+  }
+}
+
+.field-text__input--error {
+  border: 2px solid $pink;
+
+  & ~ .field-text__error-text {
+    @include field-help-text;
+  }
+
+  &:focus ~ .field-text__error-text {
+    display: none;
+  }
+}
+
+.field-text__help-text,
+.field-text__error-text {
+  display: none;
+}
+
+.field-text__name-lg {
+  @media (max-width: $screen-md - 0.1) {
+    display: none;
+  }
+}
+
+.field-text__name-md {
+  @media (min-width: $screen-md) {
+    display: none;
+  }
+}
+
+.field-text__textarea:focus:invalid,
+.field-text__textarea:hover:invalid,
+.field-text__textarea:invalid,
+.field-text__input:focus:invalid,
+.field-text__input:hover:invalid,
+.field-text__input:invalid {
+  outline: none;
+  box-shadow: none;
+}
+
+.field-text--initials {
+  @media (min-width: $screen-md) {
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+  }
+
+  .field-text__content {
+    @media (min-width: $screen-md) {
+      margin: 0;
+      margin-right: 20px;
+    }
+  }
+
+  .field-text__input-wrap {
+    @media (min-width: $screen-md) {
+      flex-grow: 1;
+    }
+  }
+}
+
+.field-text--contacts {
+  @media (min-width: $screen-md) {
+    display: flex;
+    flex-direction: column-reverse;
+    margin-bottom: 25px;
+  }
+
+  @media (min-width: $screen-lg) {
+    margin-bottom: 15px;
+  }
+
+  .field-text__content {
+    @media (min-width: $screen-md) {
+      align-self: flex-start;
+      margin-top: 10px;
+      margin-bottom: 0;
+    }
+  }
+
+  .field-text__input-wrap {
+    @media (min-width: $screen-md) {
+      position: relative;
+
+      &:before {
+        position: absolute;
+        content: '';
+        top: 2px;
+        right: 2px;
+        width: 61px;
+        height: 61px;
+      }
+    }
+  }
+
+  .field-text__input {
+    @media (min-width: $screen-md) {
+      padding-right: 80px;
+    }
+
+    @media (min-width: $screen-lg) {
+      &:focus ~ .field-text__help-text {
+        top: -15px;
+      }
+    }
+  }
+
+  .field-text__input--error {
+    @media (min-width: $screen-lg) {
+      & ~ .field-text__error-text {
+        top: -15px;
+      }
+    }
+  }
+}
+
+.field-text--phone {
+  .field-text__input-wrap {
+    &:before {
+      @media (min-width: $screen-md) {
+        background: #e5e5e5 url('../img/icon-phone.svg') center no-repeat;
+      }
+    }
+  }
+}
+
+.field-text--email {
+  .field-text__input-wrap {
+    &:before {
+      @media (min-width: $screen-md) {
+        background: #e5e5e5 url('../img/icon-mail.svg') center no-repeat;
+      }
+    }
+  }
+}
+
+.field-text--description {
+  .field-text__input-wrap {
+    @media (min-width: $screen-md) {
+      margin-bottom: 40px;
+    }
+  }
+}

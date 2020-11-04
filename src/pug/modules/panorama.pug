@@ -1,0 +1,20 @@
++photo('panorama')
+  a.photo__link(href='#')
+    +picture({
+      desktopwebp: 'img/panorama-desktop.webp',
+      desktop: 'img/panorama-desktop.jpg',
+      tabletwebp: 'img/panorama-tablet.webp',
+      tablet: 'img/panorama-tablet.jpg',
+      imgwebp: 'img/panorama-mobile.webp',
+      img: 'img/panorama-mobile.jpg',
+      alt: 'panorama'
+    })
+  figcaption.photo__comment-wrapper
+    +photo-comment({
+      name: 'Анна',
+      mods: 'panorama',
+      date: '(5 минут назад)',
+      datetime: '2017-03-24T15:18:20',
+      count: '215',
+      text: 'Прыгать или нет? Напишите в коментарии свой совет и смотрите прямую трансляцию в перископе, задавайте свои вопросы!'
+    })

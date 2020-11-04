@@ -1,0 +1,39 @@
+//- Все примеси в этом файле должны начинаться c имени блока (review)
+
+mixin review(mods)
+
+  //- Принимает:
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +review('some-mod')
+
+  //- подключаем файл со структурой данных блока
+  include review.data.pug
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' review--' + modsList[i].trim();
+      }
+    }
+
+  .review(class=allMods)&attributes(attributes)
+    .review__inner.swiper-wrapper
+      each slide in reviewSlide
+        +review-slide(slide)
+    .review__pagination.swiper-pagination
+    button.review__button.review__button--prev.swiper-button-prev
+      +svg('img/symbols.svg', 'icon-arrow-left')(class='review__arrow-icon' width='27' height='50')
+    button.review__button.review__button--next.swiper-button-next
+      +svg('img/symbols.svg', 'icon-arrow-right')(class='review__arrow-icon' width='27' height='50')
+
+mixin review-slide(slide)
+
+  .review__slide.swiper-slide
+    b(class= 'review__title')= slide.title
+    span(class= 'review__slogan')= slide.slogan
+    p(class= 'review__info')= slide.info
+    block

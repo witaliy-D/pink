@@ -1,0 +1,47 @@
+// В этом файле должны быть стили для БЭМ-блока social, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.social {
+  $block-name: &; // #{$block-name}__
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.social__link-wrap {
+  margin-right: 15px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.social__link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 52px;
+  height: 52px;
+  border: 3px solid rgba(40, 54, 69, 0.1);
+  border-radius: 50%;
+  transition: border-color $transition-time;
+
+  &:hover {
+    border: 3px solid $blue;
+  }
+
+  &:active {
+    opacity: 0.3;
+  }
+}
+
+.social__logo {
+  display: block;
+  width: 16px;
+  height: 16px;
+}

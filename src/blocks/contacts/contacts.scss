@@ -1,0 +1,69 @@
+// В этом файле должны быть стили для БЭМ-блока contacts, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.contacts {
+  $block-name: &; // #{$block-name}__element
+}
+
+.contacts__title {
+  margin: 0;
+  margin-bottom: 30px;
+
+  @media (min-width: $screen-md) {
+    margin-bottom: 40px;
+  }
+
+  @media (min-width: $screen-lg) {
+    margin-bottom: 65px;
+  }
+}
+
+.contacts__inner {
+  @include container();
+
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  @media (min-width: $screen-md) {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: $screen-lg - 0.1) {
+    max-width: 700px;
+  }
+
+  div:nth-child(2) {
+    @media (min-width: $screen-lg) {
+      order: 3;
+    }
+  }
+}
+
+.contacts__info {
+  width: 280px;
+  margin: 0 auto;
+}
+
+.contacts__info-title {
+  display: block;
+  font-weight: 700;
+
+  @media (min-width: $screen-lg) {
+    margin-bottom: 20px;
+  }
+}
+
+.contacts__info-text {
+  display: block;
+  font-size: 24px;
+  font-weight: 300;
+  margin-bottom: 15px;
+  text-decoration: none;
+  color: $pink;
+
+  @media (min-width: $screen-md) {
+    margin-bottom: 45px;
+  }
+}

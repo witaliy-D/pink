@@ -1,0 +1,49 @@
+section.photo-edit
+  h5.photo-edit__title Затмите их всех! <br> Выкладывайте все, что накопилось в телефоне!
+  .photo-edit__inner
+    form.photo-edit__form(action='#' method='post')
+      figure.photo-edit__img
+        a.photo-edit__link(href='#')
+          +picture({
+            imgwebp: 'img/photo-7.webp',
+            img: 'img/photo-7.jpg',
+            alt: 'photo-7'
+          })
+      .photo-edit__items-wrapper
+        .photo-edit__items
+          +field-range({
+            title: '',
+            id: 'crop',
+            attrs: {
+              name: 'crop',
+              min: '0',
+              max: '100',
+              value: '80',
+            }
+          })(class='photo-edit__item  photo-edit__item--crop  photo-edit__item--active')
+            +svg('img/symbols.svg', 'icon-editor-crop')
+          +field-range({
+            title: '',
+            id: 'fill',
+            attrs: {
+              name: 'fill',
+              min: '0',
+              max: '100',
+              value: '51',
+            }
+          })(class='photo-edit__item  photo-edit__item--fill')
+            +svg('img/symbols.svg', 'icon-editor-fill')
+          +field-range({
+            title: '',
+            id: 'contrast',
+            attrs: {
+              name: 'contrast',
+              min: '0',
+              max: '100',
+              value: '70',
+            }
+          })(class='photo-edit__item  photo-edit__item--contrast')
+            +svg('img/symbols.svg', 'icon-editor-contrast')(class='photo-edit__icon-contrast')
+        .photo-edit__buttons
+          +btn('Запостить', 'pink')(type='submit' class='photo-edit__btn')
+          +btn('Отмена', 'blue')(type='reset' class='photo-edit__btn')

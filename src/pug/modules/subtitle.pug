@@ -1,0 +1,12 @@
+if page === 'index'
+  h2.page__content-subtitle
+    | Устали от серости мегаполиса?
+    span  Нам есть, что вам <br> предложить!
+else if page === 'photo'
+  p.page__content-subtitle.page__content-subtitle--photo
+    | Взгляните на фотографии, которые выкладывают пользователи!
+    span  Видите,как не хватает ваших?
+else if page ==='form'
+  p.page__content-subtitle.page__content-subtitle--form
+    | Поделитесь своей историей и получите шанс выиграть ценный приз &nbsp; — &nbsp; 1000 миль на вашу бонусную карту!
+    span  Пожалуйста, заполните форму ниже:

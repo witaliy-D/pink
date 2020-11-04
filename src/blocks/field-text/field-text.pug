@@ -1,0 +1,82 @@
+//- Все примеси в этом файле должны начинаться c имени блока (field-text)
+
+mixin field-text(props)
+
+  //- Принимает:
+  //-   props {
+  //-     title: ''         {string} - текст с названием (выводится над полем)
+  //-     isTextarea: false {bool}   - флаг input/textarea
+  //-     helpText: ''      {string} - пояснение под полем
+  //-     mods: ''          {string} - модификаторы блока
+  //-     val: ''           {string} - текст в поле
+  //-     attrs:            {object} - любые атрибуты для input/textarea
+  //-       type:           {string}
+  //-       placeholder:    {string}
+  //- Вызов:
+        +field-text({
+          title: 'Название',
+          isTextarea: true,
+          helpText: 'Подсказка',
+          mods: '',
+          val: '',
+          attrs: {
+            name: 'comment',
+          }
+        })
+
+  -
+    if(typeof(props) === 'undefined') {
+      var props = {};
+    }
+    var allMods = '';
+    if(typeof(props.mods) !== 'undefined' && props.mods) {
+      var modsList = props.mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' field-text--' + modsList[i].trim();
+      }
+    }
+
+  .field-text(class=allMods)&attributes(attributes)
+    if(typeof(props.title) !== 'undefined' && props.title)
+      label.field-text__content(for=props.id)!= props.title
+    span.field-text__input-wrap
+      if(typeof(props.isTextarea) !== 'undefined' && props.isTextarea)
+        textarea.field-text__textarea&attributes(props.attrs)= props.val
+      else
+        input.field-text__input(type=(typeof(props.attrs) !== 'undefined' && props.attrs.type) ? props.attrs.type: 'text', value=props.val id=props.id)&attributes(props.attrs)
+      if(typeof(props.helpText) !== 'undefined' && props.helpText)
+        span.field-text__help-text!= props.helpText
+      if(typeof (props.errorText) !== 'undefined' && props.errorText)
+        span.field-text__error-text!= props.errorText
+      block
+
+mixin field-text-mod(props)
+
+  -
+    if (typeof (props) === 'undefined') {
+      var props = {};
+    }
+    var allMods = '';
+    if (typeof (props.mods) !== 'undefined' && props.mods) {
+      var modsList = props.mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' field-text--' + modsList[i].trim();
+      }
+    }
+
+  .field-text(class=allMods)&attributes(attributes)
+    label.field-text__content(for=props.id)
+      if(typeof (props.titleMD) !== 'undefined' && props.titleMD)
+        span.field-text__name-md!= props.titleMD
+      if(typeof (props.titleLG) !== 'undefined' && props.titleLG)
+        span.field-text__name-lg!= props.titleLG
+    span.field-text__input-wrap
+      if(typeof (props.isTextarea) !== 'undefined' && props.isTextarea)
+        textarea.field-text__textarea&attributes(props.attrs)= props.val
+      else
+        input.field-text__input(type=(typeof (props.attrs) !== 'undefined' && props.attrs.type) ? props.attrs.type: 'text', value=props.val id=props.id)&attributes(props.attrs)
+      if(typeof (props.helpText) !== 'undefined' && props.helpText)
+        span.field-text__help-text!= props.helpText
+      if(typeof (props.errorText) !== 'undefined' && props.errorText)
+        span.field-text__error-text!= props.errorText
+      block

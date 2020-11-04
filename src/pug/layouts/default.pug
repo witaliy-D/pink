@@ -1,0 +1,19 @@
+include ../helpers/mixins
+include ../helpers/blocks-mixins
+
+block variables
+
+doctype html
+html.page(lang='ru')
+  head
+    include ../modules/head
+  body.page__inner
+    header.page-header(class=headerMod)
+      include ../modules/nav
+      include ../modules/intro
+    main.page__content
+      include ../modules/subtitle
+      block content
+    include ../modules/footer
+    block modal
+    block scripts

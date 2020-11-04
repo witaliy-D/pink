@@ -1,0 +1,56 @@
+.price
+  input.price__controlls--1#price-controlls--1(name='price-controlls' type='radio' checked)
+  input.price__controlls--2#price-controlls--2(name='price-controlls' type='radio')
+  input.price__controlls--3#price-controlls--3(name='price-controlls' type='radio')
+  label(for='price-controlls--1')
+  label(for='price-controlls--2')
+  label(for='price-controlls--3')
+  .price__container
+    .price__inner
+      .price__item.price__item--options
+        ul.price__content-list
+          li.price__content-item.price__content-item--options Розовый фильтр
+          li.price__content-item.price__content-item--options Смайлики
+          li.price__content-item.price__content-item--options Комментарии
+      .price__item
+        .price__header
+          .price__title база
+            span.price__cost 1.99 USD
+        ul.price__content-list
+          li.price__content-item.price__content-item--included
+            span.price__content-info Розовый фильтр
+            span.price__hidden  есть
+          li.price__content-item.price__content-item--not-included
+            span.price__content-info Смайлики
+            span.price__hidden  нет
+          li.price__content-item.price__content-item--not-included
+            span.price__content-info Комментарии
+            span.price__hidden  нет
+      .price__item
+        .price__header
+          .price__title.price__title--hit Стандарт
+            span.price__cost 3,99 USD
+        ul.price__content-list
+          li.price__content-item.price__content-item--included
+            span.price__content-info Розовый фильтр
+            span.price__hidden  есть
+          li.price__content-item.price__content-item--included
+            span.price__content-info Смайлики
+            span.price__hidden  есть
+          li.price__content-item.price__content-item--not-included
+            span.price__content-info Комментарии
+            span.price__hidden  нет
+      .price__item
+        .price__header
+          .price__title Анлим
+            span.price__cost 9,99 USD
+        ul.price__content-list
+          li.price__content-item.price__content-item--included
+            span.price__content-info Розовый фильтр
+            span.price__hidden  есть
+          li.price__content-item.price__content-item--included
+            span.price__content-info Смайлики
+            span.price__hidden  есть
+          li.price__content-item.price__content-item--included
+            span.price__content-info Комментарии
+            span.price__hidden  есть

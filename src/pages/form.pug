@@ -1,0 +1,18 @@
+extends ../pug/layouts/default
+
+block variables
+  -
+    var title = 'HTML Academy: Пинк';
+    var selectedID = '3';
+    var page = 'form';
+    var headerMod = 'page-header--form'
+
+block content
+  include ../pug/modules/form
+block modal
+  +modal('success')
+  +modal('error')
+block scripts
+  script(src='js/vendors~form~index.js')
+  script(src='js/vendors~form.js')
+  script(src='js/form.js')

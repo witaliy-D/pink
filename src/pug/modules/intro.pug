@@ -1,0 +1,36 @@
+if page === 'photo'
+  .intro.intro--sm
+    h2.intro__title фотографии <br> пользователей
+else if page === 'form'
+  .intro.intro--sm
+    h2.intro__title Конкурс на самое безбашенное <br> путешествие с Пинк
+else if page ==='index'
+  section.intro
+    figure.intro__iphone
+      +picture({
+        desktop2xwebp: 'img/iphone-hand-desktop@2x.webp',
+        desktopwebp: 'img/iphone-hand-desktop@1x.webp',
+        desktop2x: 'img/iphone-hand-desktop@2x.png',
+        desktop: 'img/iphone-hand-desktop@1x.png',
+        tablet2xwebp: 'img/iphone-hand-tablet@2x.webp',
+        tabletwebp: 'img/iphone-hand-tablet@1x.webp',
+        tablet2x: 'img/iphone-hand-tablet@2x.png',
+        tablet: 'img/iphone-hand-tablet@1x.png',
+        img2xwebp: 'img/iphone-hand-mobile@2x.webp',
+        imgwebp: 'img/iphone-hand-mobile@1x.webp',
+        img2x: 'img/iphone-hand-mobile@2x.png',
+        img: 'img/iphone-hand-mobile@1x.png',
+        alt: 'iphone'
+      })
+    .intro__inner
+      .intro__download
+        h2.intro__title Взгляните на жизнь иначе!
+        +btn('скачать приложение', 'w300')(href='http://www.apple.com/ru/', class='intro__btn')
+        +download()
+          +download-link('http://www.apple.com/ru/')
+            +svg('img/symbols.svg', 'logo-apple')(class='download__logo download__logo--apple', width='46' height='57')
+          +download-link('https://www.android.com/intl/ru_ru/')
+            +svg('img/symbols.svg', 'logo-android')(class='download__logo download__logo--android', width='42' height='47')
+          +download-link('https://www.microsoft.com/ru-ru/windows/')
+            +svg('img/symbols.svg', 'logo-microsoft')(class='download__logo download__logo--microsoft', width='44' height='42')
+        p.intro__info  Доступно для iPhone, iPad, Android,<br> Windows Phone, OS X, Windows 8

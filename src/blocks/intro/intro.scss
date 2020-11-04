@@ -1,0 +1,167 @@
+// В этом файле должны быть стили для БЭМ-блока intro, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.intro {
+  $block-name: &; // #{$block-name}__element
+
+  min-height: 462px;
+  background-color: #afbecf;
+  background-image: url('../img/bg-back-mobile@1x.jpg');
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: 700px auto;
+
+  @media #{$retina} {
+    background-image: url('../img/bg-back-mobile@2x.jpg');
+  }
+
+  @media (min-width: $screen-md) {
+    min-height: 729px;
+    background-image: url('../img/bg-back-tablet@1x.jpg');
+    background-size: 1200px auto;
+
+    @media #{$retina} {
+      background-image: url('../img/bg-back-tablet@2x.jpg');
+    }
+  }
+
+  @media (min-width: $screen-lg) {
+    min-height: 853px;
+    background-image: url('../img/bg-back-desktop@1x.jpg');
+    background-size: 2560px auto;
+
+    @media #{$retina} {
+      background-image: url('../img/bg-back-desktop@2x.jpg');
+    }
+  }
+}
+
+.intro__iphone {
+  @include container();
+
+  position: relative;
+  min-height: inherit;
+  margin-bottom: 0;
+
+  @media (min-width: $screen-md) {
+    position: absolute;
+  }
+
+  @media (min-width: $screen-lg) {
+    right: 50%;
+    transform: translateX(50%);
+  }
+
+  img {
+    position: absolute;
+    right: 50%;
+    bottom: 0;
+    transform: translateX(50%);
+
+    @media (min-width: $screen-md) {
+      right: 0;
+      transform: none;
+    }
+  }
+}
+
+.intro__inner {
+  @include container();
+
+  background-color: $darkblue;
+
+  @media (min-width: $screen-md) {
+    position: relative;
+    z-index: 1;
+    background-color: transparent;
+  }
+}
+
+.intro__download {
+  padding-top: 30px;
+  text-align: center;
+
+  @media (min-width: $screen-md) {
+    max-width: 300px;
+    padding-top: 200px;
+  }
+
+  @media (min-width: $screen-lg) {
+    padding-top: 220px;
+  }
+}
+
+.intro__title {
+  display: none;
+
+  @media (min-width: $screen-md) {
+    display: block;
+    max-width: 240px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    color: $white;
+  }
+
+  @media (min-width: $screen-lg) {
+    margin-bottom: 60px;
+  }
+}
+
+.intro__btn {
+  margin-bottom: 30px;
+
+  @media (min-width: $screen-md) {
+    margin-bottom: 45px;
+  }
+
+  @media (min-width: $screen-lg) {
+    margin-bottom: 60px;
+  }
+}
+
+.intro__info {
+  font-weight: 300;
+  margin: 0;
+  padding: 25px 0;
+  color: $white;
+
+  @media (min-width: $screen-md) {
+    padding: 30px 0;
+  }
+
+  @media (min-width: $screen-lg) {
+    padding: 55px 0;
+  }
+}
+
+.intro--sm {
+  min-height: 235px;
+
+  @media (min-width: $screen-md) {
+    min-height: 440px;
+  }
+
+  @media (min-width: $screen-lg) {
+    min-height: 395px;
+  }
+}
+
+.intro--sm .intro__title {
+  @include container();
+
+  display: block;
+  font-size: $small-h2;
+  line-height: 30px;
+  font-weight: 300;
+  margin-bottom: 0;
+  padding-top: 100px;
+  text-align: center;
+  color: $white;
+
+  @media (min-width: $screen-md) {
+    max-width: 100%;
+    font-size: $big-h2;
+    line-height: 60px;
+    padding-top: 180px;
+  }
+}

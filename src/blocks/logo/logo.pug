@@ -1,0 +1,36 @@
+//- Все примеси в этом файле должны начинаться c имени блока (logo)
+
+mixin logo(mods)
+  if page === 'index'
+    -var logoUrl = false
+  else
+    -var logoUrl = 'index.html';
+
+  //- Принимает:
+  //-   mods  {string} - список модификаторов
+  //- Вызов:
+        +logo()
+          img(src='img/logo.svg', alt='Logo', width='64', height='15')
+        +logo('mod')
+          img(src='img/logo.svg', alt='Logo', width='64', height='15')
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' logo--' + modsList[i].trim();
+      }
+    }
+
+  a.logo(class=allMods, href=logoUrl)&attributes(attributes)
+    if mods === 'blue'
+      +svg('img/symbols.svg', 'logo-pink-blue-desktop')(class='logo__image logo__image--desktop' width='146' height='40')
+      +svg('img/symbols.svg', 'logo-pink-blue-mobile')(class='logo__image logo__image--small' width='146' height='40')
+      block
+
+    else
+      +svg('img/symbols.svg', 'logo-pink-desktop')(class='logo__image logo__image--desktop' width='146' height='40')
+      +svg('img/symbols.svg', 'logo-pink-tablet')(class='logo__image logo__image--tablet' width='146' height='40')
+      +svg('img/symbols.svg', 'logo-pink-mobile')(class='logo__image logo__image--mobile' width='74' height='23')
+      block

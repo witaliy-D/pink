@@ -1,0 +1,123 @@
+// В этом файле должны быть стили для БЭМ-блока modal, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.modal {
+  $block-name: &; // #{$block-name}__element
+
+  position: fixed;
+  display: none;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(-2000px);
+  }
+
+  70% {
+    transform: translateY(30px);
+  }
+
+  90% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.modal--open {
+  display: flex;
+
+  .modal__dialog {
+    animation: bounce 0.6s;
+  }
+}
+
+.modal--success {
+  .modal__dialog {
+    @media (min-width: $screen-lg) {
+      width: 780px;
+    }
+  }
+
+  .modal__content {
+    @media (min-width: $screen-lg) {
+      padding-right: 160px;
+      padding-left: 160px;
+    }
+  }
+}
+
+.modal--error {
+  .modal__dialog {
+    padding-bottom: 50px;
+  }
+
+  .modal__title {
+    @media (min-width: $screen-md) {
+      width: 230px;
+      margin-right: auto;
+      margin-left: auto;
+    }
+  }
+}
+
+.modal__dialog {
+  width: 320px;
+  padding-top: 50px;
+  text-align: center;
+  background: $white;
+  box-shadow: 0 7px 15px 0 rgba(0, 1, 1, 0.15);
+
+  @media (min-width: $screen-md) {
+    width: 460px;
+  }
+}
+
+.modal__content {
+  padding-right: 20px;
+  padding-left: 20px;
+
+  @media (min-width: $screen-md) {
+    padding-right: 80px;
+    padding-left: 80px;
+  }
+}
+
+.modal__title {
+  line-height: 24px;
+  margin-bottom: 25px;
+  color: $black;
+
+  @media (min-width: $screen-md) {
+    font-size: 30px;
+    line-height: 40px;
+  }
+}
+
+.modal__info {
+  margin-bottom: 35px;
+}
+
+.modal__btn-wrapper {
+  padding: 50px 20px;
+  background: $lightgray;
+
+  @media (min-width: $screen-md) {
+    padding-right: 80px;
+    padding-left: 80px;
+  }
+
+  @media (min-width: $screen-lg) {
+    padding-right: 160px;
+    padding-left: 160px;
+  }
+}

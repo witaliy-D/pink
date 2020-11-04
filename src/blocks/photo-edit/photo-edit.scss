@@ -1,0 +1,259 @@
+// В этом файле должны быть стили для БЭМ-блока photo-edit, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+.photo-edit {
+  $block-name: &; // #{$block-name}__element
+
+  @media (min-width: $screen-lg) {
+    @include container();
+  }
+}
+
+.photo-edit__title {
+  line-height: 30px;
+  font-weight: 400;
+  margin-bottom: 40px;
+  text-align: center;
+
+  @media (min-width: $screen-md) {
+    margin-bottom: 70px;
+  }
+}
+
+.photo-edit__inner {
+  @media (max-width: $screen-lg - 0.1) {
+    background-color: $lightgray;
+  }
+}
+
+.photo-edit__form {
+  padding-top: 20px;
+  padding-bottom: 40px;
+
+  @media (min-width: $screen-md) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: 'a b';
+    grid-gap: 0 20px;
+    padding-top: 55px;
+    padding-bottom: 55px;
+  }
+
+  @media (min-width: $screen-lg) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: 'a b';
+    grid-gap: 0;
+    background-color: $lightgray;
+  }
+
+  @media (max-width: $screen-lg - 0.1) {
+    @include container();
+  }
+}
+
+.photo-edit__img {
+  grid-area: a;
+  margin: 0;
+}
+
+.photo-edit__link {
+  display: flex;
+  justify-content: center;
+  line-height: 0;
+
+  img {
+    width: 100%;
+
+    @media (min-width: $screen-lg) {
+      max-width: 300px;
+    }
+  }
+}
+
+.photo-edit__items-wrapper {
+  grid-area: b;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @media (min-width: $screen-md) {
+    padding-right: 15px;
+    padding-left: 25px;
+  }
+
+  @media (min-width: $screen-lg) {
+    padding-right: 60px;
+    padding-left: 0;
+  }
+}
+
+.photo-edit__buttons {
+  @media (min-width: $screen-lg) {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.photo-edit__btn {
+  width: 100%;
+  margin-top: 15px;
+
+  @media (min-width: $screen-md) {
+    margin-top: 25px;
+  }
+
+  @media (min-width: $screen-lg) {
+    max-width: 185px;
+  }
+}
+
+.photo-edit__items {
+  position: relative;
+  margin: 0 20px 25px;
+  padding-top: 160px;
+
+  @media (min-width: $screen-md) {
+    margin: 0;
+    padding-top: 10px;
+  }
+}
+
+.photo-edit__item {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  padding-top: 115px;
+  padding-bottom: 45px;
+
+  @media (min-width: $screen-md) {
+    position: relative;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 52px;
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: 55px;
+  }
+
+  @media (min-width: $screen-lg) {
+    padding-right: 30px;
+    padding-left: 90px;
+  }
+
+  &:before {
+    position: absolute;
+    content: '';
+    right: -40px;
+    bottom: 0;
+    left: -40px;
+    height: 1px;
+    background-color: #dddfe0;
+
+    @media (min-width: $screen-md) {
+      right: -15px;
+      bottom: -26px;
+      left: 0;
+    }
+
+    @media (min-width: $screen-lg) {
+      right: 0;
+    }
+  }
+
+  input {
+    position: absolute;
+    display: block;
+    z-index: 1;
+    opacity: 0;
+
+    // stylelint-disable-next-line
+    &:hover ~ label svg {
+      opacity: 1;
+    }
+
+    @media (min-width: $screen-md) {
+      position: static;
+      opacity: 1;
+    }
+  }
+
+  label {
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    width: 48px;
+    height: 48px;
+    font-size: 0;
+    line-height: 48px;
+    z-index: 10;
+    text-align: center;
+    transform: translate(-50%, 0);
+    cursor: pointer;
+
+    @media (min-width: $screen-md) {
+      top: 50%;
+      left: 0;
+      transform: translate(0, -50%);
+    }
+
+    @media (min-width: $screen-md) and (max-width: $screen-lg - 0.1) {
+      width: 24px;
+      height: 24px;
+      line-height: 24px;
+    }
+  }
+
+  svg {
+    width: 48px;
+    height: 48px;
+    opacity: 0.3;
+    vertical-align: middle;
+    color: #8d949b;
+    transition: opacity $transition-time;
+
+    @media (min-width: $screen-md) and (max-width: $screen-lg - 0.1) {
+      width: 24px;
+      height: 24px;
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .photo-edit__icon-contrast {
+    width: 32px;
+    height: 32px;
+
+    @media (min-width: $screen-md) and (max-width: $screen-lg - 0.1) {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &--active {
+    input[type='range'] {
+      z-index: 10;
+      opacity: 1;
+    }
+
+    svg {
+      opacity: 1;
+      color: $pink;
+    }
+  }
+}
+
+.photo-edit__item--crop label {
+  @media (max-width: $screen-md - 0.1) {
+    margin-left: -35%;
+  }
+}
+
+.photo-edit__item--contrast label {
+  @media (max-width: $screen-md - 0.1) {
+    margin-left: 35%;
+  }
+}

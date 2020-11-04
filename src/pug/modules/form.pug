@@ -1,0 +1,173 @@
++form(action='#' method='post')
+  +fieldset('', 'initials')
+    +field-text({
+      id: 'second-name',
+      title: 'фамилия:',
+      mods: 'initials',
+      helpText: 'Только русские буквы',
+      errorText: 'Ошибка, перепроверьте фамилию',
+      isTextarea: false,
+      val: '',
+      attrs: {
+        name: 'second-name',
+        placeholder: 'Укажите фамилию',
+        required: true
+      }
+    })
+    +field-text({
+      id: 'first-name',
+      title: 'имя:',
+      mods: 'initials',
+      helpText: 'Только русские буквы',
+      errorText: 'Ошибка, перепроверьте имя',
+      isTextarea: false,
+      val: '',
+      attrs: {
+        name: 'first-name',
+        placeholder: 'Введите ваше имя',
+        required: true
+      }
+    })
+    +field-text({
+      id: 'middle-name',
+      title: 'отчество:',
+      mods: 'initials',
+      helpText: 'Только русские буквы',
+      errorText: 'Ошибка, перепроверьте отчество',
+      isTextarea: false,
+      val: '',
+      attrs: {
+        name: 'middle-name',
+        placeholder: 'Ну и отчество тоже',
+        required: true
+      }
+    })
+  .form__fieldset-wrapper.form__fieldset-wrapper--progress
+    +fieldset('Ваши безбашенные достижения в путешествии', 'progress')
+      +field-checkbox([
+        {
+          title: 'Сделал селфи с акулой',
+          mods: '1',
+          attrs: {
+            name: 'check1',
+            value: 'Сделал селфи с акулой',
+            checked: true
+          }
+        },
+        {
+          title: 'Обгорел на пляже',
+          mods: '2',
+          attrs: {
+            name: 'check2',
+            value: 'Обгорел на пляже',
+            checked: true
+          }
+        },
+        {
+          title: 'Видел Чака Норриса',
+          mods: '3',
+          attrs: {
+            name: 'check3',
+            value: 'Видел Чака Норриса'
+          }
+        },
+        {
+          title: 'Накупил сувениров',
+          mods: '4',
+          attrs: {
+            name: 'check4',
+            value: 'Накупил сувениров',
+            checked: true,
+          }
+        },
+        {
+          title: 'Удержал башню',
+          mods: '5',
+          attrs: {
+            name: 'check5',
+            value: 'Удержал башню'
+          }
+        },
+        {
+          title: 'Разгромил отель',
+          mods: '6',
+          attrs: {
+            name: 'check6',
+            value: 'Разгромил отель'
+          }
+        },
+      ])
+  +fieldset('Контактная информация', 'contacts')
+    .form__items-contacts
+      +field-text-mod({
+        id: 'phone',
+        mods: 'contacts, phone',
+        titleMD: 'Номерок телефончика',
+        titleLG: 'Номер телефона',
+        helpText: '+7 888 888-88-88',
+        errorText: 'Ошибка, укажите номер',
+        isTextarea: false,
+        val: '',
+        attrs: {
+          name: 'phone',
+          placeholder: 'Номер, пожалуйста',
+          required: true
+        }
+      })(class='form__item-contacts')
+      +field-text-mod({
+        id: 'email',
+        mods: 'contacts, email',
+        titleMD: 'адресок почты',
+        titleLG: 'адрес почты',
+        helpText: 'your-mail@domain.ru',
+        errorText: 'Ошибка, перепроверьте почту',
+        isTextarea: false,
+        val: '',
+        attrs: {
+          name: 'email',
+          placeholder: 'E-mail, пожалуйста',
+          required: true
+        }
+      })(class='form__item-contacts')
+  .form__fieldset-wrapper.form__fieldset-wrapper--info
+    +fieldset('С каким приложением путешествовали?', 'info')
+      +field-radio([
+        {
+          title: 'Pink для iOS',
+          attrs: {
+            name: 'radio',
+            checked: true
+          }
+        },
+        {
+          title: 'Pink на Android',
+          attrs: {
+            name: 'radio'
+          }
+        },
+        {
+          title: 'Windows Phone',
+          attrs: {
+            name: 'radio'
+          }
+        },
+      ])
+  +fieldset('Опишите свои эмоции', 'description')
+    +field-text({
+      mods: 'description',
+      errorText: 'Ошибка, оставьте отзыв',
+      isTextarea: true,
+      attrs: {
+        id: 'textarea',
+        name: 'textarea',
+        placeholder: 'Можно прям в красках, не стесняясь в выражениях',
+        required: true
+      }
+    })
+  .form__item-submit
+    +btn('отправить форму', 'green, w300')(type='submit', class='form__item-btn')
+    p.form__item-submit-text
+      span.form__item-submit-symbol *
+      |  - обязательные
+      span.form__item-submit-text-option  для заполнения
+      |  поля

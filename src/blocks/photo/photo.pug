@@ -1,0 +1,49 @@
+//- Все примеси в этом файле должны начинаться c имени блока (photo)
+
+mixin photo(mods)
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' photo--' + modsList[i].trim();
+      }
+    }
+
+  figure.photo(class=allMods)&attributes(attributes)
+    block
+
+mixin photo-comment(props)
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(props.mods) !== 'undefined' && props.mods) {
+      var modsList = props.mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' photo__comment--' + modsList[i].trim();
+      }
+    }
+
+  if props.mods === 'panorama'
+    .photo__comment(class=allMods)&attributes(attributes)
+      .photo__info
+        b.photo__autor= props.name
+        time.photo__time(datetime=props.datetime)=props.date
+      p.photo__text=props.text
+      button.photo__like(type='button')
+        span.photo__like-icon
+        span.photo__like-text нравится: #{props.count}
+      block
+  else
+    figcaption.photo__comment(class=allMods)&attributes(attributes)
+      .photo__info
+        b.photo__autor= props.name
+        time.photo__time(datetime=props.datetime)=props.date
+      p.photo__text=props.text
+      button.photo__like(type='button')
+        span.photo__like-icon
+        span.photo__like-text нравится: #{props.count}
+      block
